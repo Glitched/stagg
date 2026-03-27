@@ -1,0 +1,17 @@
+[package]
+name = "stagg"
+version = "0.1.0"
+edition = "2024"
+description = "CLI and library for controlling the Fellow Stagg EKG Pro kettle over WiFi"
+license = "MIT"
+repository = "https://github.com/Glitched/stagg"
+keywords = ["fellow", "stagg", "kettle", "iot", "smart-home"]
+categories = ["command-line-utilities", "hardware-support"]
+
+[dependencies]
+clap = { version = "4", features = ["derive", "env"] }
+reqwest = { version = "0.12", features = ["blocking"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+anyhow = "1"
+thiserror = "2"

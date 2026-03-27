@@ -278,19 +278,19 @@ impl Kettle {
     }
 
     pub fn set_temp(&self, temp_f: u32) -> Result<()> {
+        self.heat_on()?;
         self.raw_cmd(&format!("setsetting settempr {temp_f}"))?;
         self.raw_cmd("refresh")?;
-        self.raw_cmd("setstate S_Heat")?;
         Ok(())
     }
 
     pub fn brew(&self, preset: &Preset, hold_minutes: Option<u32>) -> Result<()> {
+        self.heat_on()?;
         self.raw_cmd(&format!("setsetting settempr {}", preset.temp_f))?;
         if let Some(hold) = hold_minutes {
             self.raw_cmd(&format!("setsetting hold {hold}"))?;
         }
         self.raw_cmd("refresh")?;
-        self.raw_cmd("setstate S_Heat")?;
         Ok(())
     }
 
